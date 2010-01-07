@@ -1,0 +1,8 @@
+NAME
+  fukung.rb
+
+DESCRIPTION
+  perhaps the most important ruby code EVAAARRR! gets random images from http://fukung.net.
+
+SYNOPSIS
+  render :inline => "<img src='#{ Fukung.random }' title='RAWK!'/>"
