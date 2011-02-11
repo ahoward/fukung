@@ -3,6 +3,10 @@ require 'cgi'
 require 'uri'
 
 module Fukung
+  def Fukung.version
+    '0.4.2'
+  end
+
   Host = 'fukung.net'
   MediaHost = 'media.fukung.net'
   Debug = ENV['FUKUNG_DEBUG']
