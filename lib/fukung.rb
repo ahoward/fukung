@@ -4,7 +4,7 @@ require 'uri'
 
 module Fukung
   def Fukung.version
-    '0.4.2'
+    '1.0.0'
   end
 
   Host = 'fukung.net'

@@ -1,0 +1,15 @@
+#! /usr/bin/env ruby
+
+require 'shellwords'
+
+begin
+  require 'rubygems'
+rescue LoadError
+end
+
+require 'fukung'
+require 'launchy'
+
+url = Shellwords.escape(Fukung.random)
+
+Launchy.open(url)

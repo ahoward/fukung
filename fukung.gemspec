@@ -3,13 +3,13 @@
 
 Gem::Specification::new do |spec|
   spec.name = "fukung"
-  spec.version = "0.4.2"
+  spec.version = "1.0.0"
   spec.platform = Gem::Platform::RUBY
   spec.summary = "fukung"
   spec.description = "description: fukung kicks the ass"
 
-  spec.files = ["lib", "lib/fukung.rb", "Rakefile", "README"]
-  spec.executables = []
+  spec.files = ["bin", "bin/fukung", "fukung.gemspec", "lib", "lib/fukung.rb", "Rakefile", "README"]
+  spec.executables = ["fukung"]
   
   spec.require_path = "lib"
 
@@ -17,6 +17,7 @@ Gem::Specification::new do |spec|
   spec.test_files = nil
 
 # spec.add_dependency 'lib', '>= version'
+  spec.add_dependency 'launchy'
 
   spec.extensions.push(*[])
 
