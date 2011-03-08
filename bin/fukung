@@ -1,15 +1,44 @@
 #! /usr/bin/env ruby
 
-require 'shellwords'
+Main {
+  argument('tag'){
+    optional true
+  }
 
-begin
-  require 'rubygems'
-rescue LoadError
-end
+  option('--launchy', '-l'){
+    description 'open url with launchy gem'
+    default false
+  }
 
-require 'fukung'
-require 'launchy'
+  def run
+    if params['tag'].given?
+      tag = params['tag'].value
+      url = Fukung.tag(tag).sort_by{ rand }.first
+    else
+      url = Fukung.random
+    end
 
-url = Shellwords.escape(Fukung.random)
+    if params['launchy'].given?
+      url = Shellwords.escape(url)
+      Launchy.open(url)
+    else
+      puts(url)
+    end
+  end
+}
 
-Launchy.open(url)
+
+
+
+BEGIN {
+  require 'shellwords'
+
+  begin
+    require 'rubygems'
+  rescue LoadError
+  end
+
+  require 'fukung'
+  require 'main'
+  require 'launchy'
+}
