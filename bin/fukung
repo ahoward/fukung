@@ -3,6 +3,7 @@
 Main {
   argument('tag'){
     optional true
+    default false
   }
 
   option('--launchy', '-l'){
@@ -11,18 +12,16 @@ Main {
   }
 
   def run
-    if params['tag'].given?
-      tag = params['tag'].value
-      url = Fukung.tag(tag).sort_by{ rand }.first
-    else
-      url = Fukung.random
-    end
-
-    if params['launchy'].given?
-      url = Shellwords.escape(url)
-      Launchy.open(url)
-    else
-      puts(url)
+    begin
+      if params['launchy'].given? then
+        Fukung.goto_one( params['tag'].value )
+      else
+        puts Fukung.one( params['tag'].value )
+      end
+    rescue => e
+      $stderr.puts e
+      $stderr.puts e.backtrace if $VERBOSE or Fukung::Debug
+      exit 1
     end
   end
 }
@@ -31,8 +30,6 @@ Main {
 
 
 BEGIN {
-  require 'shellwords'
-
   begin
     require 'rubygems'
   rescue LoadError
