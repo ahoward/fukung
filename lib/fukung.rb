@@ -1,16 +1,18 @@
 require 'net/http'
 require 'cgi'
 require 'uri'
+require 'launchy'
 
 module Fukung
   def Fukung.version
-    '1.0.0'
+    '1.1.0'
   end
 
   Host = 'fukung.net'
   MediaHost = 'media.fukung.net'
   Debug = ENV['FUKUNG_DEBUG']
   Nothing = Object.new.freeze
+  ENV['LAUNCHY_DEBUG'] = "true" if Debug
 
   def random
     @random ||= nil
@@ -117,6 +119,24 @@ module Fukung
 
   def result!(result)
     throw(:result, result)
+  end
+
+  def random_or_tag(a_tag = false)
+    list = a_tag ? Fukung.tag(a_tag.to_s) : [Fukung.random]
+    raise "nothing found" if list.empty?
+    return list
+  end
+
+  def one(a_tag = false)
+    random_or_tag(a_tag).sort_by{ rand }.first
+  end
+
+  def goto(a_tag = false)
+    random_or_tag(a_tag).each { |url| ::Launchy.open( url ) }
+  end
+
+  def goto_one(a_tag = false)
+    ::Launchy.open(one(a_tag))
   end
 
   extend(Fukung)
