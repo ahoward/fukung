@@ -200,7 +200,7 @@ end
 
 
 task :clean do
-  Dir[File.join(This.pkgdir, '**/**')].each{|entry| Fu.rm_rf(entry)}
+  Dir[File.join(This.pkgdir, '**/**'), File.join(This.dir, "**/*~")].each{|entry| Fu.rm_rf(entry)}
 end
 
 
