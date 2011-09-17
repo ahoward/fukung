@@ -3,7 +3,7 @@
 
 Gem::Specification::new do |spec|
   spec.name = "fukung"
-  spec.version = "1.1.0"
+  spec.version = "1.2.0"
   spec.platform = Gem::Platform::RUBY
   spec.summary = "fukung"
   spec.description = "description: fukung kicks the ass"
@@ -17,6 +17,7 @@ Gem::Specification::new do |spec|
   spec.test_files = nil
 
 # spec.add_dependency 'lib', '>= version'
+  spec.add_dependency 'main'
   spec.add_dependency 'launchy'
 
   spec.extensions.push(*[])
