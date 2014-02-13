@@ -6,7 +6,7 @@ Gem::Specification::new do |spec|
   spec.version = "1.1.0"
   spec.platform = Gem::Platform::RUBY
   spec.summary = "fukung"
-  spec.description = "description: fukung kicks the ass"
+  spec.description = "perhaps the most important ruby code EVAAARRR! gets random images from http://fukung.net."
 
   spec.files = ["bin", "bin/fukung", "fukung.gemspec", "lib", "lib/fukung.rb", "Rakefile", "README"]
   spec.executables = ["fukung"]
