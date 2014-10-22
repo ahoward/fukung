@@ -5,7 +5,7 @@ require 'launchy'
 
 module Fukung
   def Fukung.version
-    '1.1.0'
+    '2.0.0'
   end
 
   Host = 'fukung.net'
@@ -27,11 +27,13 @@ module Fukung
           result! response['Location']
         end
 
-      path = location.gsub(%r|^/v|, '')
-      raise if path.strip.empty?
-      raise if path.strip.downcase=='random'
-      path = "http://" + "#{ MediaHost }/images/#{ path }".squeeze('/')
-      raise if path=="http://#{ MediaHost }/images/random"
+      basename = File.basename(location)
+
+      #path = location.gsub(%r|^/v|, '')
+      #raise if path.strip.empty?
+      #raise if path.strip.downcase=='random'
+      path = "http://" + "#{ MediaHost }/imgs/#{ basename }".squeeze('/')
+      raise if path=="http://#{ MediaHost }/imgs/random"
       @random = path
       return @random
     rescue

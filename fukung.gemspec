@@ -3,12 +3,12 @@
 
 Gem::Specification::new do |spec|
   spec.name = "fukung"
-  spec.version = "1.1.0"
+  spec.version = "2.0.0"
   spec.platform = Gem::Platform::RUBY
   spec.summary = "fukung"
   spec.description = "description: fukung kicks the ass"
 
-  spec.files = ["bin", "bin/fukung", "fukung.gemspec", "lib", "lib/fukung.rb", "Rakefile", "README"]
+  spec.files = ["a.rb", "bin", "bin/fukung", "fukung.gemspec", "lib", "lib/fukung.rb", "Rakefile", "README"]
   spec.executables = ["fukung"]
   
   spec.require_path = "lib"
